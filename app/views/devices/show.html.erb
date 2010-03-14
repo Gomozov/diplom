@@ -1,0 +1,14 @@
+<h1>Устройство № <%= h @device.device_code %> </h1>
+
+<table>
+<% @report.each do |report| %>
+  <tr>
+    <td><%= h report.id %>   </td>
+    <td><%= h report.report_id %>   </td>
+    <td><%= h report.key %>   </td>
+    <td><%= h report.value %>   </td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Back', devices_path %>
