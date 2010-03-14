@@ -1,5 +1,9 @@
 <h1>Устройство № <%= h @device.device_code %> </h1>
 
+<%= GMap.header %>
+<%= @map.to_html %>
+<%= @map.div(:width => 700, :height => 500) %>
+
 <table>
 <% @report.each do |report| %>
   <tr>

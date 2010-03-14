@@ -2069,3 +2069,118 @@ Processing DevicesController#show (for 127.0.0.1 at 2010-03-14 20:19:29) [GET]
 Rendering template within layouts/devices
 Rendering devices/show
 Completed in 84ms (View: 11, DB: 1) | 200 OK [http://localhost/devices/6]
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-14 20:41:08) [GET]
+  [4;36;1mDevice Load (0.7ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 82ms (View: 71, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing DevicesController#show (for 127.0.0.1 at 2010-03-14 20:41:10) [GET]
+  Parameters: {"id"=>"6"}
+
+NameError (undefined local variable or method `map' for #<DevicesController:0x7f481f7d92b8>):
+  app/controllers/devices_controller.rb:25:in `show'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (106.9ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-14 20:44:49) [GET]
+  [4;36;1mDevice Load (0.7ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 82ms (View: 71, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing DevicesController#show (for 127.0.0.1 at 2010-03-14 20:44:51) [GET]
+  Parameters: {"id"=>"6"}
+  [4;35;1mDevice Load (0.3ms)[0m   [0mSELECT * FROM "devices" WHERE ("devices"."id" = 6) [0m
+  [4;36;1mReport Load (0.4ms)[0m   [0;1mSELECT * FROM "reports" WHERE ("reports"."device_id" = 6) ORDER BY reports.id DESC LIMIT 1[0m
+  [4;35;1mReportField Load (0.6ms)[0m   [0mSELECT * FROM "report_fields" WHERE ("report_fields"."report_id" = 7) [0m
+Rendering template within layouts/devices
+Rendering devices/show
+Completed in 33ms (View: 11, DB: 1) | 200 OK [http://localhost/devices/6]
+
+
+Processing DevicesController#show (for 127.0.0.1 at 2010-03-14 20:48:59) [GET]
+  Parameters: {"id"=>"6"}
+  [4;36;1mDevice Load (0.2ms)[0m   [0;1mSELECT * FROM "devices" WHERE ("devices"."id" = 6) [0m
+  [4;35;1mReport Load (0.3ms)[0m   [0mSELECT * FROM "reports" WHERE ("reports"."device_id" = 6) ORDER BY reports.id DESC LIMIT 1[0m
+  [4;36;1mReportField Load (0.4ms)[0m   [0;1mSELECT * FROM "report_fields" WHERE ("report_fields"."report_id" = 7) [0m
+Rendering template within layouts/devices
+Rendering devices/show
+Completed in 40ms (View: 11, DB: 1) | 200 OK [http://localhost/devices/6]
+
+
+Processing DevicesController#show (for 127.0.0.1 at 2010-03-14 20:52:04) [GET]
+  Parameters: {"id"=>"6"}
+  [4;36;1mDevice Load (0.2ms)[0m   [0;1mSELECT * FROM "devices" WHERE ("devices"."id" = 6) [0m
+  [4;35;1mReport Load (0.3ms)[0m   [0mSELECT * FROM "reports" WHERE ("reports"."device_id" = 6) ORDER BY reports.id DESC LIMIT 1[0m
+  [4;36;1mReportField Load (0.4ms)[0m   [0;1mSELECT * FROM "report_fields" WHERE ("report_fields"."report_id" = 7) [0m
+Rendering template within layouts/devices
+Rendering devices/show
+Completed in 41ms (View: 11, DB: 1) | 200 OK [http://localhost/devices/6]
+
+
+Processing DevicesController#show (for 127.0.0.1 at 2010-03-14 20:52:08) [GET]
+  Parameters: {"id"=>"6"}
+  [4;35;1mDevice Load (0.3ms)[0m   [0mSELECT * FROM "devices" WHERE ("devices"."id" = 6) [0m
+  [4;36;1mReport Load (0.3ms)[0m   [0;1mSELECT * FROM "reports" WHERE ("reports"."device_id" = 6) ORDER BY reports.id DESC LIMIT 1[0m
+  [4;35;1mReportField Load (0.6ms)[0m   [0mSELECT * FROM "report_fields" WHERE ("report_fields"."report_id" = 7) [0m
+Rendering template within layouts/devices
+Rendering devices/show
+Completed in 26ms (View: 5, DB: 1) | 200 OK [http://localhost/devices/6]
+
+
+Processing DevicesController#show (for 127.0.0.1 at 2010-03-14 20:52:19) [GET]
+  Parameters: {"id"=>"6"}
+  [4;36;1mDevice Load (0.3ms)[0m   [0;1mSELECT * FROM "devices" WHERE ("devices"."id" = 6) [0m
+  [4;35;1mReport Load (0.4ms)[0m   [0mSELECT * FROM "reports" WHERE ("reports"."device_id" = 6) ORDER BY reports.id DESC LIMIT 1[0m
+  [4;36;1mReportField Load (0.5ms)[0m   [0;1mSELECT * FROM "report_fields" WHERE ("report_fields"."report_id" = 7) [0m
+Rendering template within layouts/devices
+Rendering devices/show
+Completed in 28ms (View: 6, DB: 1) | 200 OK [http://localhost/devices/6]
+
+
+Processing DevicesController#show (for 127.0.0.1 at 2010-03-14 20:53:37) [GET]
+  Parameters: {"id"=>"6"}
+  [4;36;1mDevice Load (0.2ms)[0m   [0;1mSELECT * FROM "devices" WHERE ("devices"."id" = 6) [0m
+  [4;35;1mReport Load (0.3ms)[0m   [0mSELECT * FROM "reports" WHERE ("reports"."device_id" = 6) ORDER BY reports.id DESC LIMIT 1[0m
+  [4;36;1mReportField Load (0.3ms)[0m   [0;1mSELECT * FROM "report_fields" WHERE ("report_fields"."report_id" = 7) [0m
+Rendering template within layouts/devices
+Rendering devices/show
+Completed in 41ms (View: 12, DB: 1) | 200 OK [http://localhost/devices/6]
+
+
+Processing DevicesController#show (for 127.0.0.1 at 2010-03-14 20:58:02) [GET]
+  Parameters: {"id"=>"6"}
+  [4;36;1mDevice Load (0.2ms)[0m   [0;1mSELECT * FROM "devices" WHERE ("devices"."id" = 6) [0m
+  [4;35;1mReport Load (0.3ms)[0m   [0mSELECT * FROM "reports" WHERE ("reports"."device_id" = 6) ORDER BY reports.id DESC LIMIT 1[0m
+  [4;36;1mReportField Load (0.3ms)[0m   [0;1mSELECT * FROM "report_fields" WHERE ("report_fields"."report_id" = 7) [0m
+Rendering template within layouts/devices
+Rendering devices/show
+Completed in 40ms (View: 11, DB: 1) | 200 OK [http://localhost/devices/6]
+
+
+Processing DevicesController#show (for 127.0.0.1 at 2010-03-14 20:59:14) [GET]
+  Parameters: {"id"=>"6"}
+  [4;36;1mDevice Load (0.2ms)[0m   [0;1mSELECT * FROM "devices" WHERE ("devices"."id" = 6) [0m
+  [4;35;1mReport Load (0.3ms)[0m   [0mSELECT * FROM "reports" WHERE ("reports"."device_id" = 6) ORDER BY reports.id DESC LIMIT 1[0m
+  [4;36;1mReportField Load (0.4ms)[0m   [0;1mSELECT * FROM "report_fields" WHERE ("report_fields"."report_id" = 7) [0m
+Rendering template within layouts/devices
+Rendering devices/show
+Completed in 40ms (View: 11, DB: 1) | 200 OK [http://localhost/devices/6]

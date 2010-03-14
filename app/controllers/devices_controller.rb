@@ -1,4 +1,8 @@
 class DevicesController < ApplicationController
+  
+  require 'rubygems'
+  require 'google_geocode'
+  
   # GET /devices
   # GET /devices.xml
   def index
@@ -13,9 +17,16 @@ class DevicesController < ApplicationController
   # GET /devices/1
   # GET /devices/1.xml
   def show
+
     @device = Device.find(params[:id])
     @report_id = Report.last(:conditions => {:device_id => @device.id})
     @report = ReportField.all(:conditions => {:report_id => @report_id.id})
+
+    gg = GoogleGeocode.new "ABQIAAAAeSgpsuI2BCtpNLyED8LDQBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxRnm97MQYcMTzXsEX4lf8tuo6XmWA"           
+    @map = GMap.new("map_div")                                                                                                
+    @map.control_init(:small => true, :large_map => true)                      
+    @map.center_zoom_init([57, 32],14)                                                                                        
+    @map.overlay_init(GMarker.new([57, 32],:title => @device.device_code, :info_bubble => 'g'))
 
     respond_to do |format|
       format.html # show.html.erb
