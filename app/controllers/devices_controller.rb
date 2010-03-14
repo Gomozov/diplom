@@ -25,8 +25,8 @@ class DevicesController < ApplicationController
     gg = GoogleGeocode.new "ABQIAAAAeSgpsuI2BCtpNLyED8LDQBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxRnm97MQYcMTzXsEX4lf8tuo6XmWA"           
     @map = GMap.new("map_div")                                                                                                
     @map.control_init(:small => true, :large_map => true)                      
-    @map.center_zoom_init([57, 32],14)                                                                                        
-    @map.overlay_init(GMarker.new([57, 32],:title => @device.device_code, :info_bubble => 'g'))
+    @map.center_zoom_init([56.3, 32],7)                                                                                        
+    @map.overlay_init(GMarker.new([56.3, 32],:title => @device.device_code, :info_bubble => 'ConnectPort X4'))
 
     respond_to do |format|
       format.html # show.html.erb
