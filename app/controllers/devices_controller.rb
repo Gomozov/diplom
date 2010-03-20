@@ -17,7 +17,7 @@ class DevicesController < ApplicationController
   def show
 
     @device = Device.find(params[:id])
-    @report = @device.report.last
+    @report = @device.reports.last
     @report_fields = @report.fields :order => 'key'
     @lat =  @report['latitude']
     @lon =  @report['longitude']
