@@ -12,13 +12,13 @@
     <td> Значение   </td>
     <td> Дата создания   </td>
   </tr> 
-<% @report.each do |report| %>
+<% @report_fields.each do |field| %>
   <tr>
-    <td><%= h report.id %>   </td>
-    <td><%= h report.report_id %>   </td>
-    <td><%= h report.key %>   </td>
-    <td><%= h report.value %>   </td>
-    <td><%= h report.created_at %>   </td>
+    <td><%= h field.id %>   </td>
+    <td><%= h field.report_id %>   </td>
+    <td><%= h field.key %>   </td>
+    <td><%= h field.value %>   </td>
+    <td><%= h field.created_at %>   </td>
   </tr>
 <% end %>
 </table>
