@@ -41,7 +41,7 @@ class ReportsController < ApplicationController
   # POST /reports.xml
   def create
     @device_code = params[:report].delete(:device_code)
-    @device = Device.find_or_create_by_code :device_code => @device_code
+    @device = Device.find_or_create_by_code @device_code
     @report = Report.new(params[:report].merge :device_id => @device.id)
 
     respond_to do |format|
