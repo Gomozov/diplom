@@ -2,14 +2,15 @@
 
 <table>
   <tr>
+     <td><b> Имя устройства  </b> </td>
+     <td><b> Дата получения пакета  </b> </td>
   </tr>
-
 <% @devices.each do |device| %>
   <tr>
     <td><%=h device.device_code %></td>
     <td><%=h device.created_at %></td>
-    <td><%= link_to 'Show', device %></td>
-    <td><%= link_to 'Destroy', device, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Подробнее', device %></td>
+    <td><%= link_to 'Удалить из базы', device, :confirm => 'Вы уверенны?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

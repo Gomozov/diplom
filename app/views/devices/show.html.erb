@@ -6,11 +6,11 @@
 
 <table>
   <tr>
-    <td> ID_записи   </td>
-    <td> ID_репорта  </td>
-    <td> Параметр   </td>
-    <td> Значение   </td>
-    <td> Дата создания   </td>
+    <td><b> ID_записи  </b> </td>
+    <td><b> ID_репорта </b> </td>
+    <td><b> Параметр   </b></td>
+    <td><b> Значение  </b> </td>
+    <td><b> Дата создания  </b> </td>
   </tr> 
 <% @report.each do |report| %>
   <tr>
@@ -23,4 +23,4 @@
 <% end %>
 </table>
 
-<%= link_to 'Back', devices_path %>
+<%= link_to 'Назад', devices_path %>
