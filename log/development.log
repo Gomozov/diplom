@@ -4419,3 +4419,774 @@ Processing DevicesController#index (for 192.168.0.103 at 2010-03-27 22:34:43) [G
 Rendering template within layouts/devices
 Rendering devices/index
 Completed in 19ms (View: 10, DB: 1) | 200 OK [http://192.168.0.101/]
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 01:14:24) [GET]
+  [4;36;1mDevice Load (0.9ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 216ms (View: 198, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 01:14:24) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ReportsController#create (for 127.0.0.1 at 2010-03-28 01:15:02) [POST]
+  Parameters: {"report"=>{"device_code"=>"ав590_73rus", "latitude"=>"56.1", "longitude"=>"35", "temperature"=>"23.1"}}
+  [4;35;1mDevice Load (0.6ms)[0m   [0mSELECT * FROM "devices" WHERE ("devices"."device_code" = 'ав590_73rus') LIMIT 1[0m
+  [4;36;1mReport Create (0.5ms)[0m   [0;1mINSERT INTO "reports" ("created_at", "updated_at", "device_id") VALUES('2010-03-27 22:15:02', '2010-03-27 22:15:02', 8)[0m
+  [4;35;1mReportField Create (0.2ms)[0m   [0mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-27 22:15:02', '2010-03-27 22:15:02', 18, '56.1', 'latitude')[0m
+  [4;36;1mReportField Create (0.1ms)[0m   [0;1mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-27 22:15:02', '2010-03-27 22:15:02', 18, '35', 'longitude')[0m
+  [4;35;1mReportField Create (0.1ms)[0m   [0mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-27 22:15:02', '2010-03-27 22:15:02', 18, '23.1', 'temperature')[0m
+Redirected to http://localhost:3000/reports/18
+Completed in 49ms (DB: 2) | 302 Found [http://localhost/reports]
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 01:26:31) [GET]
+  [4;36;1mDevice Load (1.0ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 219ms (View: 202, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 01:26:31) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 01:26:35) [GET]
+  [4;35;1mDevice Load (0.7ms)[0m   [0mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 20ms (View: 10, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 01:26:35) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 01:26:36) [GET]
+  [4;36;1mDevice Load (0.7ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 20ms (View: 11, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 01:26:36) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 01:26:37) [GET]
+  [4;35;1mDevice Load (0.7ms)[0m   [0mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 22ms (View: 14, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 01:26:37) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 01:26:39) [GET]
+  [4;36;1mDevice Load (0.7ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 21ms (View: 10, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 01:26:39) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 01:26:59) [GET]
+  [4;35;1mDevice Load (0.7ms)[0m   [0mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 20ms (View: 11, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 01:26:59) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 01:27:02) [GET]
+  [4;36;1mDevice Load (0.7ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 18ms (View: 10, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 01:27:02) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#show (for 127.0.0.1 at 2010-03-28 01:27:04) [GET]
+  Parameters: {"id"=>"8"}
+  [4;35;1mDevice Load (0.3ms)[0m   [0mSELECT * FROM "devices" WHERE ("devices"."id" = 8) [0m
+  [4;36;1mReport Load (0.4ms)[0m   [0;1mSELECT * FROM "reports" WHERE ("reports"."device_id" = 8) ORDER BY reports.id DESC LIMIT 1[0m
+  [4;35;1mReportField Load (0.6ms)[0m   [0mSELECT * FROM "report_fields" WHERE ("report_fields"."report_id" = 18) [0m
+  [4;36;1mReportField Load (0.4ms)[0m   [0;1mSELECT * FROM "report_fields" WHERE ("report_fields"."key" = 'latitude' AND "report_fields"."report_id" = 18) LIMIT 1[0m
+  [4;35;1mReportField Load (0.3ms)[0m   [0mSELECT * FROM "report_fields" WHERE ("report_fields"."key" = 'longitude' AND "report_fields"."report_id" = 18) LIMIT 1[0m
+Rendering template within layouts/devices
+Rendering devices/show
+Completed in 39ms (View: 9, DB: 2) | 200 OK [http://localhost/devices/8]
+
+
+Processing DevicesController#show (for 127.0.0.1 at 2010-03-28 01:27:33) [GET]
+  Parameters: {"id"=>"7"}
+  [4;36;1mDevice Load (0.3ms)[0m   [0;1mSELECT * FROM "devices" WHERE ("devices"."id" = 7) [0m
+  [4;35;1mReport Load (0.4ms)[0m   [0mSELECT * FROM "reports" WHERE ("reports"."device_id" = 7) ORDER BY reports.id DESC LIMIT 1[0m
+  [4;36;1mReportField Load (0.8ms)[0m   [0;1mSELECT * FROM "report_fields" WHERE ("report_fields"."report_id" = 15) [0m
+  [4;35;1mReportField Load (0.5ms)[0m   [0mSELECT * FROM "report_fields" WHERE ("report_fields"."key" = 'latitude' AND "report_fields"."report_id" = 15) LIMIT 1[0m
+  [4;36;1mReportField Load (0.4ms)[0m   [0;1mSELECT * FROM "report_fields" WHERE ("report_fields"."key" = 'longitude' AND "report_fields"."report_id" = 15) LIMIT 1[0m
+Rendering template within layouts/devices
+Rendering devices/show
+Completed in 116ms (View: 3, DB: 2) | 200 OK [http://localhost/devices/7]
+
+
+Processing ReportsController#create (for 127.0.0.1 at 2010-03-28 01:28:28) [POST]
+  Parameters: {"report"=>{"device_code"=>"аб590_73rus", "latitude"=>"56.1", "longitude"=>"35", "temperature"=>"23.1"}}
+  [4;35;1mDevice Load (0.5ms)[0m   [0mSELECT * FROM "devices" WHERE ("devices"."device_code" = 'аб590_73rus') LIMIT 1[0m
+  [4;36;1mDevice Create (0.4ms)[0m   [0;1mINSERT INTO "devices" ("device_code", "created_at", "updated_at") VALUES('аб590_73rus', '2010-03-27 22:28:28', '2010-03-27 22:28:28')[0m
+  [4;35;1mReport Create (0.4ms)[0m   [0mINSERT INTO "reports" ("created_at", "updated_at", "device_id") VALUES('2010-03-27 22:28:28', '2010-03-27 22:28:28', 9)[0m
+  [4;36;1mReportField Create (0.2ms)[0m   [0;1mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-27 22:28:28', '2010-03-27 22:28:28', 19, '56.1', 'latitude')[0m
+  [4;35;1mReportField Create (0.1ms)[0m   [0mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-27 22:28:28', '2010-03-27 22:28:28', 19, '35', 'longitude')[0m
+  [4;36;1mReportField Create (0.2ms)[0m   [0;1mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-27 22:28:28', '2010-03-27 22:28:28', 19, '23.1', 'temperature')[0m
+Redirected to http://localhost:3000/reports/19
+Completed in 50ms (DB: 2) | 302 Found [http://localhost/reports]
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 01:37:45) [GET]
+  [4;36;1mDevice Load (0.9ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 227ms (View: 209, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 01:37:45) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ReportsController#create (for 127.0.0.1 at 2010-03-28 01:38:08) [POST]
+  Parameters: {"report"=>{"device_code"=>"аг590_73rus", "latitude"=>"56.1", "longitude"=>"35", "temperature"=>"23.1"}}
+  [4;35;1mDevice Load (0.5ms)[0m   [0mSELECT * FROM "devices" WHERE ("devices"."device_code" = 'аг590_73rus') LIMIT 1[0m
+  [4;36;1mDevice Create (0.4ms)[0m   [0;1mINSERT INTO "devices" ("device_code", "created_at", "updated_at") VALUES('аг590_73rus', '2010-03-27 22:38:08', '2010-03-27 22:38:08')[0m
+  [4;35;1mReport Create (0.4ms)[0m   [0mINSERT INTO "reports" ("created_at", "updated_at", "device_id") VALUES('2010-03-27 22:38:08', '2010-03-27 22:38:08', 10)[0m
+  [4;36;1mReportField Create (0.2ms)[0m   [0;1mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-27 22:38:08', '2010-03-27 22:38:08', 20, '56.1', 'latitude')[0m
+  [4;35;1mReportField Create (0.1ms)[0m   [0mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-27 22:38:08', '2010-03-27 22:38:08', 20, '35', 'longitude')[0m
+  [4;36;1mReportField Create (0.1ms)[0m   [0;1mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-27 22:38:08', '2010-03-27 22:38:08', 20, '23.1', 'temperature')[0m
+Redirected to http://localhost:3000/reports/20
+Completed in 62ms (DB: 2) | 302 Found [http://localhost/reports]
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 09:28:06) [GET]
+  [4;36;1mDevice Load (1.0ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 274ms (View: 255, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 09:28:06) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 09:28:07) [GET]
+  [4;35;1mDevice Load (0.8ms)[0m   [0mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 26ms (View: 17, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 09:28:07) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#destroy (for 127.0.0.1 at 2010-03-28 09:28:18) [DELETE]
+  Parameters: {"id"=>"10"}
+  [4;36;1mDevice Load (0.3ms)[0m   [0;1mSELECT * FROM "devices" WHERE ("devices"."id" = 10) [0m
+  [4;35;1mDevice Destroy (0.3ms)[0m   [0mDELETE FROM "devices" WHERE "id" = 10[0m
+Redirected to http://localhost:3000/devices
+Completed in 36ms (DB: 1) | 302 Found [http://localhost/devices/10]
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 09:28:19) [GET]
+  [4;36;1mDevice Load (0.7ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 24ms (View: 15, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 09:28:19) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 09:28:27) [GET]
+  [4;35;1mDevice Load (0.8ms)[0m   [0mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 24ms (View: 16, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 09:28:27) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ReportsController#create (for 127.0.0.1 at 2010-03-28 09:29:52) [POST]
+  Parameters: {"report"=>{"device_code"=>"аг590_73rus", "latitude"=>"56.1", "longitude"=>"35", "temperature"=>"23.1"}}
+  [4;36;1mDevice Load (0.4ms)[0m   [0;1mSELECT * FROM "devices" WHERE ("devices"."device_code" = 'аг590_73rus') LIMIT 1[0m
+  [4;35;1mDevice Create (0.3ms)[0m   [0mINSERT INTO "devices" ("device_code", "created_at", "updated_at") VALUES('аг590_73rus', '2010-03-28 06:29:52', '2010-03-28 06:29:52')[0m
+  [4;36;1mReport Create (0.3ms)[0m   [0;1mINSERT INTO "reports" ("created_at", "updated_at", "device_id") VALUES('2010-03-28 06:29:52', '2010-03-28 06:29:52', 11)[0m
+  [4;35;1mReportField Create (0.2ms)[0m   [0mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-28 06:29:52', '2010-03-28 06:29:52', 21, '56.1', 'latitude')[0m
+  [4;36;1mReportField Create (0.2ms)[0m   [0;1mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-28 06:29:52', '2010-03-28 06:29:52', 21, '35', 'longitude')[0m
+  [4;35;1mReportField Create (0.2ms)[0m   [0mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-28 06:29:52', '2010-03-28 06:29:52', 21, '23.1', 'temperature')[0m
+Redirected to http://localhost:3000/reports/21
+Completed in 133ms (DB: 2) | 302 Found [http://localhost/reports]
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 09:30:10) [GET]
+  [4;36;1mDevice Load (0.8ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 26ms (View: 16, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 09:30:10) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 09:46:44) [GET]
+  [4;36;1mDevice Load (1.2ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 224ms (View: 207, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 09:46:44) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#destroy (for 127.0.0.1 at 2010-03-28 09:46:48) [DELETE]
+  Parameters: {"id"=>"11"}
+  [4;35;1mDevice Load (0.3ms)[0m   [0mSELECT * FROM "devices" WHERE ("devices"."id" = 11) [0m
+  [4;36;1mDevice Destroy (0.4ms)[0m   [0;1mDELETE FROM "devices" WHERE "id" = 11[0m
+Redirected to http://localhost:3000/devices
+Completed in 42ms (DB: 1) | 302 Found [http://localhost/devices/11]
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 09:46:48) [GET]
+  [4;35;1mDevice Load (1.0ms)[0m   [0mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 98ms (View: 88, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 09:46:48) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ReportsController#create (for 127.0.0.1 at 2010-03-28 09:46:54) [POST]
+  Parameters: {"report"=>{"device_code"=>"аг590_73rus", "latitude"=>"56.1", "longitude"=>"35", "temperature"=>"23.1"}}
+  [4;36;1mDevice Load (0.5ms)[0m   [0;1mSELECT * FROM "devices" WHERE ("devices"."device_code" = 'аг590_73rus') LIMIT 1[0m
+  [4;35;1mDevice Create (0.3ms)[0m   [0mINSERT INTO "devices" ("device_code", "created_at", "updated_at") VALUES('аг590_73rus', '2010-03-28 06:46:54', '2010-03-28 06:46:54')[0m
+  [4;36;1mReport Create (0.5ms)[0m   [0;1mINSERT INTO "reports" ("created_at", "updated_at", "device_id") VALUES('2010-03-28 06:46:54', '2010-03-28 06:46:54', 12)[0m
+  [4;35;1mReportField Create (0.2ms)[0m   [0mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-28 06:46:54', '2010-03-28 06:46:54', 22, '56.1', 'latitude')[0m
+  [4;36;1mReportField Create (0.1ms)[0m   [0;1mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-28 06:46:54', '2010-03-28 06:46:54', 22, '35', 'longitude')[0m
+  [4;35;1mReportField Create (0.1ms)[0m   [0mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-28 06:46:54', '2010-03-28 06:46:54', 22, '23.1', 'temperature')[0m
+Redirected to http://localhost:3000/reports/22
+Completed in 63ms (DB: 2) | 302 Found [http://localhost/reports]
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 09:48:41) [GET]
+  [4;36;1mDevice Load (1.0ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 223ms (View: 205, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 09:48:42) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#destroy (for 127.0.0.1 at 2010-03-28 09:48:47) [DELETE]
+  Parameters: {"id"=>"12"}
+  [4;35;1mDevice Load (0.4ms)[0m   [0mSELECT * FROM "devices" WHERE ("devices"."id" = 12) [0m
+  [4;36;1mDevice Destroy (0.4ms)[0m   [0;1mDELETE FROM "devices" WHERE "id" = 12[0m
+Redirected to http://localhost:3000/devices
+Completed in 58ms (DB: 1) | 302 Found [http://localhost/devices/12]
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 09:48:47) [GET]
+  [4;35;1mDevice Load (0.9ms)[0m   [0mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 26ms (View: 15, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 09:48:47) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ReportsController#create (for 127.0.0.1 at 2010-03-28 09:48:50) [POST]
+  Parameters: {"report"=>{"device_code"=>"аг590_73rus", "latitude"=>"56.1", "longitude"=>"35", "temperature"=>"23.1"}}
+  [4;36;1mDevice Load (0.4ms)[0m   [0;1mSELECT * FROM "devices" WHERE ("devices"."device_code" = 'аг590_73rus') LIMIT 1[0m
+  [4;35;1mDevice Create (0.3ms)[0m   [0mINSERT INTO "devices" ("device_code", "created_at", "updated_at") VALUES('аг590_73rus', '2010-03-28 06:48:50', '2010-03-28 06:48:50')[0m
+  [4;36;1mReport Create (0.3ms)[0m   [0;1mINSERT INTO "reports" ("created_at", "updated_at", "device_id") VALUES('2010-03-28 06:48:50', '2010-03-28 06:48:50', 13)[0m
+  [4;35;1mReportField Create (0.2ms)[0m   [0mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-28 06:48:50', '2010-03-28 06:48:50', 23, '56.1', 'latitude')[0m
+  [4;36;1mReportField Create (0.1ms)[0m   [0;1mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-28 06:48:50', '2010-03-28 06:48:50', 23, '35', 'longitude')[0m
+  [4;35;1mReportField Create (0.1ms)[0m   [0mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-28 06:48:50', '2010-03-28 06:48:50', 23, '23.1', 'temperature')[0m
+Redirected to http://localhost:3000/reports/23
+Completed in 65ms (DB: 1) | 302 Found [http://localhost/reports]
+
+
+Processing DevicesController#index (for 192.168.0.100 at 2010-03-28 17:30:05) [GET]
+  [4;36;1mDevice Load (0.8ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 24ms (View: 15, DB: 1) | 200 OK [http://192.168.0.101/devices]
+
+
+Processing ApplicationController#index (for 192.168.0.100 at 2010-03-28 17:30:20) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 20:11:02) [GET]
+  [4;36;1mDevice Load (1.1ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 227ms (View: 209, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 20:11:02) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#destroy (for 127.0.0.1 at 2010-03-28 20:11:22) [DELETE]
+  Parameters: {"id"=>"13"}
+  [4;35;1mDevice Load (0.4ms)[0m   [0mSELECT * FROM "devices" WHERE ("devices"."id" = 13) [0m
+  [4;36;1mDevice Destroy (0.4ms)[0m   [0;1mDELETE FROM "devices" WHERE "id" = 13[0m
+Redirected to http://localhost:3000/devices
+Completed in 21ms (DB: 1) | 302 Found [http://localhost/devices/13]
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 20:11:22) [GET]
+  [4;35;1mDevice Load (0.9ms)[0m   [0mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 100ms (View: 91, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 20:11:23) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ReportsController#create (for 127.0.0.1 at 2010-03-28 20:11:40) [POST]
+  Parameters: {"report"=>{"device_code"=>"аг590_73rus", "latitude"=>"56.1", "longitude"=>"35", "temperature"=>"23.1"}}
+  [4;36;1mDevice Load (0.5ms)[0m   [0;1mSELECT * FROM "devices" WHERE ("devices"."device_code" = 'аг590_73rus') LIMIT 1[0m
+  [4;35;1mDevice Create (0.4ms)[0m   [0mINSERT INTO "devices" ("device_code", "created_at", "updated_at") VALUES('аг590_73rus', '2010-03-28 17:11:40', '2010-03-28 17:11:40')[0m
+  [4;36;1mReport Create (0.3ms)[0m   [0;1mINSERT INTO "reports" ("created_at", "updated_at", "device_id") VALUES('2010-03-28 17:11:40', '2010-03-28 17:11:40', 14)[0m
+  [4;35;1mReportField Create (0.2ms)[0m   [0mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-28 17:11:40', '2010-03-28 17:11:40', 24, '56.1', 'latitude')[0m
+  [4;36;1mReportField Create (0.1ms)[0m   [0;1mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-28 17:11:40', '2010-03-28 17:11:40', 24, '35', 'longitude')[0m
+  [4;35;1mReportField Create (0.2ms)[0m   [0mINSERT INTO "report_fields" ("created_at", "updated_at", "report_id", "value", "key") VALUES('2010-03-28 17:11:40', '2010-03-28 17:11:40', 24, '23.1', 'temperature')[0m
+Redirected to http://localhost:3000/reports/24
+Completed in 46ms (DB: 2) | 302 Found [http://localhost/reports]
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 20:17:01) [GET]
+  [4;36;1mDevice Load (1.0ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 25ms (View: 16, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 20:17:01) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#destroy (for 127.0.0.1 at 2010-03-28 20:18:54) [DELETE]
+  Parameters: {"id"=>"14"}
+  [4;35;1mDevice Load (0.3ms)[0m   [0mSELECT * FROM "devices" WHERE ("devices"."id" = 14) [0m
+  [4;36;1mDevice Destroy (0.2ms)[0m   [0;1mDELETE FROM "devices" WHERE "id" = 14[0m
+Redirected to http://localhost:3000/devices
+Completed in 12ms (DB: 1) | 302 Found [http://localhost/devices/14]
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 20:18:54) [GET]
+  [4;35;1mDevice Load (0.8ms)[0m   [0mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 24ms (View: 14, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 20:18:54) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 20:21:05) [GET]
+  [4;36;1mDevice Load (1.0ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 227ms (View: 209, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 20:21:06) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 20:24:19) [GET]
+  [4;36;1mDevice Load (1.1ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 218ms (View: 200, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 20:24:19) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DevicesController#index (for 127.0.0.1 at 2010-03-28 20:26:00) [GET]
+  [4;36;1mDevice Load (1.0ms)[0m   [0;1mSELECT * FROM "devices" [0m
+Rendering template within layouts/devices
+Rendering devices/index
+Completed in 227ms (View: 209, DB: 1) | 200 OK [http://localhost/devices]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-28 20:26:00) [GET]
+
+ActionController::RoutingError (No route matches "/prototype.js" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)

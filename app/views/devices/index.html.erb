@@ -1,5 +1,9 @@
 <h1>Список контролируемых устройств </h1>
-
+<script src="prototype.js"></script>
+<script>
+    new Ajax.PeriodicalUpdater('devices', '/devices', {method: 'GET'});  
+  </script>
+  <div id='devices'>  
 <table>
   <tr>
      <td><b> Имя устройства  </b> </td>
@@ -14,5 +18,5 @@
   </tr>
 <% end %>
 </table>
-
+</div>
 <br />
