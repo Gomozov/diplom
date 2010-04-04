@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <td><b> ID_записи  </b> </td>
+    <td><b> ID_репорта </b> </td>
+    <td><b> Параметр   </b></td>
+    <td><b> Значение  </b> </td>
+    <td><b> Дата создания  </b> </td>
+  </tr> 
+<% @report.each do |report| %>
+  <tr>
+    <td><%= h report.id %>   </td>
+    <td><%= h report.report_id %>   </td>
+    <td><%= h report.key %>   </td>
+    <td><%= h report.value %>   </td>
+    <td><%= h report.created_at %>   </td>
+  </tr>
+<% end %>
+</table>

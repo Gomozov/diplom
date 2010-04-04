@@ -6,12 +6,10 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Devices: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
+  <%= javascript_include_tag :defaults %>
 </head>
 <body>
 
-<p style="color: green"><%= flash[:notice] %></p>
-
 <%= yield %>
-
 </body>
 </html>

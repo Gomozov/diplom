@@ -1,15 +1,11 @@
 class DevicesController < ApplicationController
   
-  #require 'rubygems'
-  #require 'google_geocode'
-  
   # GET /devices
   # GET /devices.xml
   def index
     @devices = Device.all
-
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render(:action => "index_ajax", :layout => nil) if params[:ajax]}
       format.xml  { render :xml => @devices }
     end
   end
@@ -32,7 +28,7 @@ class DevicesController < ApplicationController
     @map.overlay_init(GMarker.new([@lat.value, @lon.value],:title => @device.device_code, :info_window => '<b>ConnectPort X4</b>'))
     
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render(:action => "show_ajax", :layout => nil) if params[:ajax]} # show.html.erb
       format.xml  { render :xml => @device }
     end
   end

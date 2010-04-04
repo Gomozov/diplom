@@ -1,22 +1,26 @@
-<h1>Список контролируемых устройств </h1>
-<script src="prototype.js"></script>
 <script>
-    new Ajax.PeriodicalUpdater('devices', '/devices', {method: 'GET'});  
-  </script>
-  <div id='devices'>  
+  new Ajax.PeriodicalUpdater('devices', '/devices', {method: 'GET', frequency: 15, decay: 1, parameters:{ajax: 1}});  
+</script> 
+<div>
+ <%= image_tag('logo.png') %>
+ <hr>
+</div>
+
+<h1>Список контролируемых устройств</h1> 
+
+<div id='devices'>
 <table>
   <tr>
      <td><b> Имя устройства  </b> </td>
      <td><b> Дата получения пакета  </b> </td>
-  </tr>
+   </tr>   
 <% @devices.each do |device| %>
   <tr>
     <td><%=h device.device_code %></td>
     <td><%=h device.created_at %></td>
-    <td><%= link_to 'Подробнее', device %></td>
-    <td><%= link_to 'Удалить из базы', device, :confirm => 'Вы уверенны?', :method => :delete %></td>
+    <td><%= link_to image_tag('more.png', :border => 0), device %></td>
+    <td><%= link_to image_tag('del.png', :border => 0), device, :confirm => 'Вы уверенны?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 </div>
-<br />

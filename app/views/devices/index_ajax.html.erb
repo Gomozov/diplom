@@ -1,0 +1,16 @@
+<table>
+  <tr>
+     <td><b> Имя устройства  </b> </td>
+     <td><b> Дата получения пакета  </b> </td>
+   </tr>
+   
+<% @devices.each do |device| %>
+  <tr>
+    <td><%=h device.device_code %></td>
+    <td><%=h device.created_at %></td>
+    <td><%= link_to image_tag('more.png', :border => 0, :title => 'Подробнее'), device %></td>
+    <td><%= link_to image_tag('del.png', :border => 0, :title => 'Удалить из базы'), device, :confirm => 'Вы уверенны?', :method => :delete %></td>
+  </tr>
+<% end %>
+
+</table>

@@ -1,9 +1,19 @@
+<script> 
+  new Ajax.PeriodicalUpdater('device','/devices/'+<%= @device.id %>, {method: 'GET', frequency: 15, decay: 1,parameters:{ajax: 1}});
+</script>
+
+<div>
+  <%= image_tag('logo.png') %>
+  <hr>
+</div>
+
 <h1>Устройство № <%= h @device.device_code %> </h1>
 
 <%= GMap.header %>
 <%= @map.to_html %>
 <%= @map.div(:width => 700, :height => 500) %>
 
+<div id='device'>
 <table>
   <tr>
     <td><b> ID_записи  </b> </td>
@@ -22,5 +32,5 @@
   </tr>
 <% end %>
 </table>
-
-<%= link_to 'Назад', devices_path %>
+</div>
+<%= link_to image_tag('back.png', :border =>0, :title => 'Назад'), devices_path %>
