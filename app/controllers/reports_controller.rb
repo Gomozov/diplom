@@ -1,12 +1,21 @@
 class ReportsController < ApplicationController
-  # GET /reports
-  def index
-    @reports = Report.all
-  end
 
   # GET /reports/1
   def show
-    @report = Report.find params[:id]
+    @report = if params[:device_id] && params[:id] == 'last'
+      Device.find(params[:device_id]).reports.last
+    else
+      Report.find params[:id]
+    end
+
+    respond_to do |format|
+      format.html do
+        @fields = @report.fields
+      end
+      format.json do
+
+      end
+    end
   end
 
   # POST /reports
@@ -17,9 +26,9 @@ class ReportsController < ApplicationController
 
     if @report.save
       flash[:notice] = 'Report was successfully created.'
-      redirect_to @report
+      render :text => '', :status => 200
     else
-      render :action => "new"
+      render :text => '', :status => 500
     end
   end
 

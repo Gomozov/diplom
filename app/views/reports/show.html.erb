@@ -1,2 +1,3 @@
-<%= h @report.id  %>
+<%= render :partial => 'reports/fields', :locals => {:fields => @fields } %>
+
 <%= link_to 'Back', reports_path %>

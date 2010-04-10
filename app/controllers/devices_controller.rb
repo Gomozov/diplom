@@ -16,7 +16,7 @@ class DevicesController < ApplicationController
     @fields = @report.fields.all :order => 'key'
     
     if params[:ajax]
-      render :template => "devices/_fields.html.erb", :locals => {:fields => @fields}, :layout => false
+      render :template => "reports/_fields.html.erb", :locals => {:fields => @fields}, :layout => false
     else
       #gg = GoogleGeocode.new "ABQIAAAAeSgpsuI2BCtpNLyED8LDQBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxRnm97MQYcMTzXsEX4lf8tuo6XmWA"
       @map = GMap.new "map_div"
