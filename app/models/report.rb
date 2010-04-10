@@ -23,13 +23,29 @@ class Report < ActiveRecord::Base
    
   def field(key)
      key = key.to_s
-     (@fields_cache ||= {})[key] ||= fields.find_by_key key
+     convert( (@fields_cache ||= {})[key] ||= fields.find_by_key(key) )
   end
 
   def fields_hash
-    result = Hash[fields.map{|f| [f.key, f.value]}]
+    result = Hash[fields.map{|f| [f.key, convert(f.value)]}]
     result.merge! attributes
     result
+  end
+
+  private 
+
+  def convert(value)
+     case value
+     when nil
+       nil
+     when /\d+\.\d+/
+       value.to_f
+     when /\d+/
+       value.to_i
+     else
+       value
+     end
+
   end
 
 end
