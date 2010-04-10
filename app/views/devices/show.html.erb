@@ -1,6 +1,10 @@
 <script type='text/javascript' src='http://www.google.com/jsapi'></script>
 <script type='text/javascript'> 
 
+
+  var device_id = <%= @device.id %>;
+  var last_report = <%= @last_report.fields_hash.to_json %>;
+
   var viz_data =  null;
   var chart_object =  null;
   var chart_options = {
@@ -34,13 +38,13 @@
     d.addColumn('number', 'Value');
     d.addRows(1);
     d.setValue(0, 0, 'Temperature');
-    d.setValue(0, 1, <%= @report['temperature'] %>);
+    d.setValue(0, 1, last_report['temperature']);
     chart_object = new google.visualization.Gauge(document.getElementById('chart_div'));
     drawChart();
     setInterval( updateTemperature, 1000);
   });
 
-  new Ajax.PeriodicalUpdater('device','/devices/'+<%= @device.id %> +'/reports/last', {method: 'GET', frequency: 2, decay: 1,parameters:{ajax: 1}});
+  new Ajax.PeriodicalUpdater('device','/devices/'+device_id+'/reports/last', {method: 'GET', frequency: 2, decay: 1,parameters:{ajax: 1}});
 </script> 
 
 <div>
