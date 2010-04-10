@@ -7,13 +7,13 @@ class ReportsController < ApplicationController
     else
       Report.find params[:id]
     end
+    
+    @fields = @report.fields
 
     respond_to do |format|
-      format.html do
-        @fields = @report.fields
-      end
+      format.html
       format.json do
-
+        render :json => Hash[@fields.map{|f| [f.key, f.value]}]
       end
     end
   end
