@@ -26,4 +26,10 @@ class Report < ActiveRecord::Base
      (@fields_cache ||= {})[key] ||= fields.find_by_key key
   end
 
+  def fields_hash
+    result = Hash[fields.map{|f| [f.key, f.value]}]
+    result.merge! attributes
+    result
+  end
+
 end
