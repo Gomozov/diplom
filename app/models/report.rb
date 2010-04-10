@@ -1,5 +1,5 @@
 class Report < ActiveRecord::Base
-  has_many :report_fields
+  has_many :fields, :class_name => 'ReportField'
   belongs_to :devices
 
   def initialize(attrs)
@@ -23,7 +23,7 @@ class Report < ActiveRecord::Base
    
   def field(key)
      key = key.to_s
-     @fields_cache[key] ||= fields.find_by_key key
-  end           
+     (@fields_cache ||= {})[key] ||= fields.find_by_key key
+  end
 
 end

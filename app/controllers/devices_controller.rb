@@ -11,19 +11,19 @@ class DevicesController < ApplicationController
   # GET /devices/1
   def show
 
-    @device = Device.find(params[:id])
-    @report_id = Report.last(:conditions => {:device_id => @device.id})
-    @report = ReportField.all(:conditions => {:report_id => @report_id.id})
-    @report = @report.sort_by { |t| t.key }
-    @lat = ReportField.find(:first, :conditions => {:report_id => @report_id.id, :key => 'latitude'})
-    @lon = ReportField.find(:first, :conditions => {:report_id => @report_id.id, :key => 'longitude'})
-    @temperature = ReportField.find(:first, :conditions => {:report_id => @report_id.id, :key => 'temperature'})
+    @device = Device.find params[:id]
+    @report = @device.reports.last
+    @fields = @report.fields.all :order => 'key'
 
     #gg = GoogleGeocode.new "ABQIAAAAeSgpsuI2BCtpNLyED8LDQBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxRnm97MQYcMTzXsEX4lf8tuo6XmWA"
-    @map = GMap.new("map_div")                                                                                                
-    @map.control_init(:small => true, :large_map => true, :map_type => true)
-    @map.center_zoom_init([@lat.value, @lon.value],6)                                                                                        
-    @map.overlay_init(GMarker.new([@lat.value, @lon.value],:title => @device.device_code, :info_window => '<b>ConnectPort X4</b>'))
+    @map = GMap.new "map_div"
+    @map.control_init :small => true, :large_map => true, :map_type => true
+    
+    geo_point =  [ @report['latitude'], @report['longitude'] ]
+    @map.center_zoom_init geo_point, 6
+
+    marker = GMarker.new geo_point, :title => @device.device_code, :info_window => '<b>ConnectPort X4</b>'
+    @map.overlay_init marker
     
     if params[:ajax]
       render :action => "show_ajax", :layout => nil

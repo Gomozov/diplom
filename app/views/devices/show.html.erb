@@ -12,11 +12,11 @@ data.addColumn('string', 'Label');
 data.addColumn('number', 'Value');
 data.addRows(1);
 data.setValue(0, 0, 'Temperature');
-data.setValue(0, 1, <%= @temperature.value %>);
+data.setValue(0, 1, <%= @report['temperature'] %>);
 var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
 var options = {width: 400, height: 120, max:50,greenFrom:0,greenTo:20, redFrom: 31, redTo: 50, yellowFrom:21, yellowTo: 30, minorTicks: 5};
 chart.draw(data, options);
-setInterval(function() { data.setValue(0, 1, <%= @temperature.value %>);
+setInterval(function() { data.setValue(0, 1, <%= @report['temperature'] %>);
                          chart.draw(data, options);
                        }, 13000);
                       }
@@ -65,13 +65,13 @@ setInterval(function() { data.setValue(0, 1, <%= @temperature.value %>);
      <td style='padding-right:15px;'><b> Значение  </b> </td>
      <td style='padding-right:15px;'><b> Дата создания  </b> </td>
    </tr> 
-   <% @report.each do |report| %>
+   <% @fields.each do |f| %>
    <tr>
-     <td><%= h report.id %>   </td>
-     <td><%= h report.report_id %>   </td>
-     <td><%= h report.key %>   </td>
-     <td><%= h report.value %>   </td>
-     <td><%= h report.created_at.strftime('%d %B %Y %a %H:%M') %>   </td>
+     <td><%= h f.id %>   </td>
+     <td><%= h f.report_id %>   </td>
+     <td><%= h f.key %>   </td>
+     <td><%= h f.value %>   </td>
+     <td><%= h f.created_at.strftime('%d %B %Y %a %H:%M') %>   </td>
    </tr>
    <% end %>
    </table>
