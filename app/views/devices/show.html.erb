@@ -40,7 +40,7 @@
     setInterval( updateTemperature, 1000);
   });
 
-  new Ajax.PeriodicalUpdater('device','/devices/'+<%= @device.id %>, {method: 'GET', frequency: 2, decay: 1,parameters:{ajax: 1}});
+  new Ajax.PeriodicalUpdater('device','/devices/'+<%= @device.id %> +'/reports/last', {method: 'GET', frequency: 2, decay: 1,parameters:{ajax: 1}});
 </script> 
 
 <div>

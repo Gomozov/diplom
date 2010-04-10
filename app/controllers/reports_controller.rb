@@ -12,6 +12,9 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html do
         @fields = @report.fields
+        if params[:ajax]
+          render :template => "reports/_fields.html.erb", :locals => {:fields => @fields}, :layout => false
+        end
       end
       format.json do
         render :json => @report.fields_hash
