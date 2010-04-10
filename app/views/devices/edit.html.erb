@@ -1,12 +1,43 @@
-<h1>Editing device</h1>
+ <div style='float:left;'>
+    <%= image_tag('logo.png') %>
+  </div>
+  <div style='padding-right:60px; padding-top:46px; float:right;'>
+    <table>
+      <td><%= link_to image_tag('home.png', :border =>0, :title => 'Домой'), devices_path %> </td>
+      <td><%= link_to image_tag('find.png', :border =>0, :title => 'Поиск'), devices_path %> </td>
+      <td><%= link_to image_tag('settings.png',:border =>0, :title => 'Настройки'), devices_path %> </td>
+    </table>
+  </div>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+<hr>
 
-<% form_for(@device) do |f| %>
-  <%= f.error_messages %>
+<h1>Редактирование статуса устройства</h1>
 
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+<% form_for @device do |form| %>
+  <table>
+  <tr>
+    <td style='padding-right:10px;'> Device Name: </td>
+    <td>  <%= form.label @device.device_code %> </td>
+  </tr>
+  <tr>
+    <td> Created at: </td>
+    <td><%= form.label @device.created_at %> </td>
+  </tr>
+  <tr>
+    <td> Old status: </td>
+    <td><%= form.label @device.device_status %></td>
+  </tr> 
+  <tr>
+    <td> New status: </td>
+    <td><%= form.select :device_status, [['stop', 'stop'], ['repair', 'repair'], ['go', 'go']] %> </td>
+  </tr>
+  </table>
+  <%= submit_tag 'Update' %>
 <% end %>
 
-<%= link_to 'Show', @device %> |
-<%= link_to 'Back', devices_path %>
+<%= link_to image_tag('back.png', :border =>0, :title => 'Назад'), devices_path %> 

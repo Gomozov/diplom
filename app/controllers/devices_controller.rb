@@ -18,8 +18,9 @@ class DevicesController < ApplicationController
     @report_id = Report.last(:conditions => {:device_id => @device.id})
     @report = ReportField.all(:conditions => {:report_id => @report_id.id})
     @report = @report.sort_by { |t| t.key }
-    @lat =    ReportField.find(:first, :conditions => {:report_id => @report_id.id, :key => 'latitude'})
-    @lon =    ReportField.find(:first, :conditions => {:report_id => @report_id.id, :key => 'longitude'})
+    @lat = ReportField.find(:first, :conditions => {:report_id => @report_id.id, :key => 'latitude'})
+    @lon = ReportField.find(:first, :conditions => {:report_id => @report_id.id, :key => 'longitude'})
+    @temperature = ReportField.find(:first, :conditions => {:report_id => @report_id.id, :key => 'temperature'})
 
     #gg = GoogleGeocode.new "ABQIAAAAeSgpsuI2BCtpNLyED8LDQBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxRnm97MQYcMTzXsEX4lf8tuo6XmWA"
     @map = GMap.new("map_div")                                                                                                
@@ -29,7 +30,7 @@ class DevicesController < ApplicationController
     
     respond_to do |format|
       format.html { render(:action => "show_ajax", :layout => nil) if params[:ajax]} # show.html.erb
-      format.xml  { render :xml => @device }
+      format.xml  { render :xml => {@device, @temperature} }
     end
   end
 
@@ -74,7 +75,7 @@ class DevicesController < ApplicationController
     respond_to do |format|
       if @device.update_attributes(params[:device])
         flash[:notice] = 'Device was successfully updated.'
-        format.html { redirect_to(@device) }
+        format.html { redirect_to(devices_url) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -2,35 +2,79 @@
   new Ajax.PeriodicalUpdater('device','/devices/'+<%= @device.id %>, {method: 'GET', frequency: 15, decay: 1,parameters:{ajax: 1}});
 </script>
 
+<script type='text/javascript' src='http://www.google.com/jsapi'></script>
+<script type='text/javascript'> 
+google.load('visualization', '1', {packages:['gauge']});
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+var data = new google.visualization.DataTable();
+data.addColumn('string', 'Label');
+data.addColumn('number', 'Value');
+data.addRows(1);
+data.setValue(0, 0, 'Temperature');
+data.setValue(0, 1, <%= @temperature.value %>);
+var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+var options = {width: 400, height: 120, max:50,greenFrom:0,greenTo:20, redFrom: 31, redTo: 50, yellowFrom:21, yellowTo: 30, minorTicks: 5};
+chart.draw(data, options);
+setInterval(function() { data.setValue(0, 1, <%= @temperature.value %>);
+                         chart.draw(data, options);
+                       }, 13000);
+                      }
+</script> 
+
 <div>
+
+ <div style='float:left;'>
   <%= image_tag('logo.png') %>
-  <hr>
+ </div>
+
+ <div style='padding-right: 46px; padding-top: 60px; float:right'>
+  <table>
+    <td><%= link_to image_tag('home.png', :border =>0, :title => 'Домой'), devices_path %> </td>
+    <td><%= link_to image_tag('find.png', :border =>0, :title => 'Поиск'), devices_path %> </td>
+    <td><%= link_to image_tag('settings.png',:border =>0, :title => 'Настройки'), devices_path %> </td>
+  </table>
+ </div>
+
 </div>
+<hr>
+<div class="clear"></div>
 
-<h1>Устройство № <%= h @device.device_code %> </h1>
+<div class="container_12">
+   <h3>Устройство № <%= h @device.device_code %> </h3>
 
-<%= GMap.header %>
-<%= @map.to_html %>
-<%= @map.div(:width => 700, :height => 500) %>
+   <div class='grid_7' >
+   <%= GMap.header %>
+   <%= @map.to_html %>
+   <%= @map.div(:width => 500, :height => 300) %>
+   </div>
 
-<div id='device'>
-<table>
-  <tr>
-    <td><b> ID_записи  </b> </td>
-    <td><b> ID_репорта </b> </td>
-    <td><b> Параметр   </b></td>
-    <td><b> Значение  </b> </td>
-    <td><b> Дата создания  </b> </td>
-  </tr> 
-<% @report.each do |report| %>
-  <tr>
-    <td><%= h report.id %>   </td>
-    <td><%= h report.report_id %>   </td>
-    <td><%= h report.key %>   </td>
-    <td><%= h report.value %>   </td>
-    <td><%= h report.created_at %>   </td>
-  </tr>
-<% end %>
-</table>
+   <div class='grid_5' style='text-align: center; border: 1px solid grey;'>
+     <b>Параметры датчиков</b>                                      
+     <div id='chart_div'> </div>
+   </div>
+
+   <div class="clear"></div>
+
+   <div id='device' >
+   <table>
+    <tr>
+     <td style='padding-right:15px;'><b> ID_записи  </b> </td>
+     <td style='padding-right:15px;'><b> ID_репорта </b></td>
+     <td style='padding-right:15px;'><b> Параметр   </b></td>
+     <td style='padding-right:15px;'><b> Значение  </b> </td>
+     <td style='padding-right:15px;'><b> Дата создания  </b> </td>
+   </tr> 
+   <% @report.each do |report| %>
+   <tr>
+     <td><%= h report.id %>   </td>
+     <td><%= h report.report_id %>   </td>
+     <td><%= h report.key %>   </td>
+     <td><%= h report.value %>   </td>
+     <td><%= h report.created_at.strftime('%d %B %Y %a %H:%M') %>   </td>
+   </tr>
+   <% end %>
+   </table>
+   </div>
 </div>
 <%= link_to image_tag('back.png', :border =>0, :title => 'Назад'), devices_path %>
