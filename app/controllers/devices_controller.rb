@@ -1,17 +1,14 @@
 class DevicesController < ApplicationController
   
   # GET /devices
-  # GET /devices.xml
   def index
     @devices = Device.all
-    respond_to do |format|
-      format.html { render(:action => "index_ajax", :layout => nil) if params[:ajax]}
-      format.xml  { render :xml => @devices }
+    if params[:ajax]
+      render :action => "index_ajax", :layout => nil
     end
   end
 
   # GET /devices/1
-  # GET /devices/1.xml
   def show
 
     @device = Device.find(params[:id])
@@ -28,72 +25,38 @@ class DevicesController < ApplicationController
     @map.center_zoom_init([@lat.value, @lon.value],6)                                                                                        
     @map.overlay_init(GMarker.new([@lat.value, @lon.value],:title => @device.device_code, :info_window => '<b>ConnectPort X4</b>'))
     
-    respond_to do |format|
-      format.html { render(:action => "show_ajax", :layout => nil) if params[:ajax]} # show.html.erb
-      format.xml  { render :xml => {@device, @temperature} }
+    if params[:ajax]
+      render :action => "show_ajax", :layout => nil
     end
   end
 
   # GET /devices/new
-  # GET /devices/new.xml
   def new
     @device = Device.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @device }
-    end
   end
 
   # GET /devices/1/edit
   def edit
-    @device = Device.find(params[:id])
-  end
-
-  # POST /devices
-  # POST /devices.xml
-  def create
-    @device = Device.new(params[:device])
-
-    respond_to do |format|
-      if @device.save
-        flash[:notice] = 'Device was successfully created.'
-        format.html { redirect_to(@device) }
-        format.xml  { render :xml => @device, :status => :created, :location => @device }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @device.errors, :status => :unprocessable_entity }
-      end
-    end
+    @device = Device.find params[:id]
   end
 
   # PUT /devices/1
-  # PUT /devices/1.xml
   def update
-    @device = Device.find(params[:id])
+    @device = Device.find params[:id]
 
-    respond_to do |format|
-      if @device.update_attributes(params[:device])
+      if @device.update_attributes params[:device]
         flash[:notice] = 'Device was successfully updated.'
-        format.html { redirect_to(devices_url) }
-        format.xml  { head :ok }
+        redirect_to devices_url
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @device.errors, :status => :unprocessable_entity }
+        render :action => "edit"
       end
-    end
   end
 
   # DELETE /devices/1
-  # DELETE /devices/1.xml
   def destroy
-    @device = Device.find(params[:id])
+    @device = Device.find params[:id]
     @device.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(devices_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to devices_url
   end
   
 end
