@@ -4,7 +4,7 @@ class DevicesController < ApplicationController
   def index
     @devices = Device.all
     if params[:ajax]
-      render :action => "index_ajax", :layout => nil
+      render :template => "devices/_devices.html.erb", :locals => {:devices => @devices}, :layout => false
     end
   end
 
@@ -14,19 +14,19 @@ class DevicesController < ApplicationController
     @device = Device.find params[:id]
     @report = @device.reports.last
     @fields = @report.fields.all :order => 'key'
-
-    #gg = GoogleGeocode.new "ABQIAAAAeSgpsuI2BCtpNLyED8LDQBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxRnm97MQYcMTzXsEX4lf8tuo6XmWA"
-    @map = GMap.new "map_div"
-    @map.control_init :small => true, :large_map => true, :map_type => true
-    
-    geo_point =  [ @report['latitude'], @report['longitude'] ]
-    @map.center_zoom_init geo_point, 6
-
-    marker = GMarker.new geo_point, :title => @device.device_code, :info_window => '<b>ConnectPort X4</b>'
-    @map.overlay_init marker
     
     if params[:ajax]
-      render :action => "show_ajax", :layout => nil
+      render :template => "devices/_fields.html.erb", :locals => {:fields => @fields}, :layout => false
+    else
+      #gg = GoogleGeocode.new "ABQIAAAAeSgpsuI2BCtpNLyED8LDQBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxRnm97MQYcMTzXsEX4lf8tuo6XmWA"
+      @map = GMap.new "map_div"
+      @map.control_init :small => true, :large_map => true, :map_type => true
+      
+      geo_point =  [ @report['latitude'], @report['longitude'] ]
+      @map.center_zoom_init geo_point, 6
+
+      marker = GMarker.new geo_point, :title => @device.device_code, :info_window => '<b>ConnectPort X4</b>'
+      @map.overlay_init marker
     end
   end
 
