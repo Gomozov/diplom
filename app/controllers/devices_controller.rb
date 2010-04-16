@@ -15,11 +15,13 @@ class DevicesController < ApplicationController
     @last_report = @device.reports.last
     @fields = @last_report.fields.all :order => 'key'
     
-    #gg = GoogleGeocode.new "ABQIAAAAeSgpsuI2BCtpNLyED8LDQBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxRnm97MQYcMTzXsEX4lf8tuo6XmWA"
     @map = GMap.new "map_div"
     @map.control_init :small => true, :large_map => true, :map_type => true
     
     geo_point =  [ @last_report['latitude'], @last_report['longitude'] ]
+    #@fields.reject!{|f| %w{latitude longitude}.include? f.key}
+    #@fields.reject!{|f| f.key.include? 'error'}
+    #@fields.reject!{|f| f.key.include? 'addr'}
     @map.center_zoom_init geo_point, 6
 
     marker = GMarker.new geo_point, :title => @device.device_code, :info_window => '<b>ConnectPort X4</b>'

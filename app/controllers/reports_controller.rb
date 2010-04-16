@@ -8,16 +8,16 @@ class ReportsController < ApplicationController
       Report.find params[:id]
     end
     
-
     respond_to do |format|
       format.html do
         @fields = @report.fields
+        @fields.reject!{|f| !((f.key.include? 'addr') or (f.key.include? 'ADuC')) }
         if params[:ajax]
           render :template => "reports/_fields.html.erb", :locals => {:fields => @fields}, :layout => false
         end
       end
       format.json do
-        render :json => @report.fields_hash
+        render :json => @report.physical_fields_hash
       end
     end
   end

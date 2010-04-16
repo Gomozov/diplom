@@ -32,15 +32,29 @@ class Report < ActiveRecord::Base
     result
   end
 
+  def physical_fields_hash
+     result = Hash[fields.map{|f| [f.key, convert(f.value)]}]
+     # result = temporary_result.select {|key, value| key.include? 'data'}
+     result.delete_if {|key, value| !(key.include? 'data')}
+     result.each_key {|key| result[key.gsub(' data','')] = result.delete(key)}
+     result
+  end
+
+  def addr_fields_hash
+    result = Hash[fields.map{|f| [f.key, convert(f.value)]}]
+    result.delete_if {|key, value| !(key.include? 'addr')}
+    result
+  end
+
   private 
 
   def convert(value)
      case value
      when nil
        nil
-     when /\d+\.\d+/
+     when /^\d+\.\d+$/
        value.to_f
-     when /\d+/
+     when /^\d+$/
        value.to_i
      else
        value

@@ -3,8 +3,7 @@
 
 
   var device_id = <%= @device.id %>;
-  var last_report = <%= @last_report.fields_hash.to_json %>;
-
+  var last_physical_report = <%= @last_report.physical_fields_hash.to_json %>;
   var viz_data =  null;
   var chart_object =  null;
   var chart_options = {
@@ -21,21 +20,24 @@
     chart_object.draw(data, chart_options);
   }
 
-  function requestLastReport()
+ function requestLastReport()
   {
     new Ajax.Request('/devices/'+device_id+'/reports/last.json', {
       method: 'GET',
       onSuccess: function(transport){
         var result = transport.responseJSON;
         updateLastReport(result);
-      }
-    });
-
+                                     } });
   }
 
   function updateLastReport(data)
-  {
-    viz_data.setValue(0, 1, data['temperature'] );
+{
+    var i = 0;                                                                        
+    for(key in data)                                                  
+         {
+          viz_data.setValue(i, 1, data[key]);                                    
+          i++;                                                                            
+         }    
     drawChart(viz_data); 
   }
 
@@ -43,23 +45,31 @@
   {
     new Ajax.PeriodicalUpdater('device','/devices/'+device_id+'/reports/last', {
       method: 'GET',
-      frequency: 15,
+      frequency: 10,
       decay: 1,
       parameters: {
         ajax: 1
       }
     });
-    setInterval( requestLastReport, 1000);
+    setInterval( requestLastReport, 8000);
   }
 
   google.load('visualization', '1', {packages:['gauge']});
+ 
   google.setOnLoadCallback(function(){
     var d = viz_data = new google.visualization.DataTable();
     d.addColumn('string', 'Label');
     d.addColumn('number', 'Value');
-    d.addRows(1);
-    d.setValue(0, 0, 'Temperature');
-    d.setValue(0, 1, last_report['temperature']);
+   // var l = last_physical_report.length;
+   // d.addRows(9);
+   // var i = 0;
+    for(key in last_physical_report)
+    {
+      d.addRow([key, last_physical_report[key]]);
+     // d.setValue(i, 0, key);
+     // d.setValue(i, 1, last_physical_report[key]);
+     // i++;
+    }
     chart_object = new google.visualization.Gauge(document.getElementById('chart_div'));
     drawChart(d);
     initializeUpdater();
@@ -102,7 +112,7 @@
    <div class="clear"></div>
 
    <div id='device' >
-     <%= render :partial => 'reports/fields', :locals => {:fields => @fields } %>
+   <%= @fields.reject!{|f| !((f.key.include? 'addr') or (f.key.include? 'ADuC')) } %>
+   <%= render :partial => 'reports/fields', :locals => {:fields => @fields } %>
    </div>
 </div>
-<%= link_to image_tag('back.png', :border =>0, :title => 'Назад'), devices_path %>
