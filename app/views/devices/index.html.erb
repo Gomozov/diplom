@@ -2,18 +2,21 @@
   new Ajax.PeriodicalUpdater('devices', '/devices', {method: 'GET', frequency: 15, decay: 1, parameters:{ajax: 1}});  
 </script>
 
-<div style='float:left;'>
-   <%= image_tag('logo.png') %>
+<div>
+ <div style='float:left;'>
+  <%= image_tag('logo.png') %>
  </div>
- <div style='padding-right:60px; padding-top:46px; float:right;'>
-   <table>
-     <td><%= link_to image_tag('home.png', :border =>0, :title => 'Домой') %> </td>
-     <td><%= image_tag('find.png', :border =>0, :title => 'Поиск') %> </td>
-     <td><%= image_tag('settings.png',:border =>0, :title => 'Настройки') %> </td>
-   </table>
+
+ <div style='padding-right: 46px; padding-top: 60px; float:right'>
+  <table>
+    <td><%= link_to image_tag('home.png', :border =>0, :title => 'Домой'), devices_path %> </td>
+    <td><%= link_to image_tag('find.png', :border =>0, :title => 'Поиск'), devices_path %> </td>
+    <td><%= link_to image_tag('settings.png',:border =>0, :title => 'Настройки'), devices_path %> </td>
+  </table>
  </div>
-  <br/>
+</div>
 <hr>
+<div class="clear"></div>
 
 <h1>Список контролируемых устройств</h1> 
 

@@ -7,7 +7,7 @@
   var viz_data =  null;
   var chart_object =  null;
   var chart_options = {
-    width: 400, height: 120,
+    width: 400, height: 360,
     max: 50,
     greenFrom: 0, greenTo: 20,
     redFrom: 31, redTo: 50,
@@ -60,15 +60,9 @@
     var d = viz_data = new google.visualization.DataTable();
     d.addColumn('string', 'Label');
     d.addColumn('number', 'Value');
-   // var l = last_physical_report.length;
-   // d.addRows(9);
-   // var i = 0;
     for(key in last_physical_report)
     {
       d.addRow([key, last_physical_report[key]]);
-     // d.setValue(i, 0, key);
-     // d.setValue(i, 1, last_physical_report[key]);
-     // i++;
     }
     chart_object = new google.visualization.Gauge(document.getElementById('chart_div'));
     drawChart(d);
