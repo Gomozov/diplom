@@ -34,15 +34,19 @@ class Report < ActiveRecord::Base
 
   def physical_fields_hash
      result = Hash[fields.map{|f| [f.key, convert(f.value)]}]
-     # result = temporary_result.select {|key, value| key.include? 'data'}
-     result.delete_if {|key, value| !(key.include? 'data')}
+     result.delete_if {|key, value| !((key.include? 'data')or(key.include? 'ADuC'))}
+     result_t = Hash.new
+     result.each_key {|key| result_t = Hash[*result[key].unpack('C*').delete_if{|item| ((item == 255) or (item == 254))}.reverse!] if key.include?('ADuC')}
+     result.delete_if {|key,value| key.include? 'ADuC'}
      result.each_key {|key| result[key.gsub(' data','')] = result.delete(key)}
+     result.update(result_t)
      result
   end
 
   def addr_fields_hash
     result = Hash[fields.map{|f| [f.key, convert(f.value)]}]
-    result.delete_if {|key, value| !(key.include? 'addr')}
+    result.delete_if {|key, value| !((key.include? 'addr') or (key.include? 'ADuC'))}
+    result.each_key {|key| result[key] = result[key].unpack('C*').to_s if key.include?('ADuC')}
     result
   end
 

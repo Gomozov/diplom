@@ -4,10 +4,16 @@
   <td style='padding-right:15px;'><% if f.key.include? 'ADuC' %>
                                   <%= image_tag 'aduc.png' %>  
                                   <% else %>
-                                    <%= image_tag 'xbee.png'%>
-                                  <%end%></td>
-    <td style='padding-right:15px;'><%= h f.value %>   </td>
-    <td style='padding-right:15px;'><%= h f.created_at.strftime('%d %B %Y %H:%M') %>   </td>
+                                  <%= image_tag 'xbee.png'%>
+                                  <%end%>
+  </td>
+  <td style='padding-right:15px;'><% if f.key.include? 'ADuC' %>
+                                  ADuC 832 
+                                  <% else %>
+                                  <%=h f.value %> 
+                                  <%end%>
+  </td>
+  <td style='padding-right:15px;'><%= h f.created_at.strftime('%d %B %Y %H:%M') %>   </td>
   </tr>
 <% end %>
 </table>

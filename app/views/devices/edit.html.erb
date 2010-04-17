@@ -1,20 +1,19 @@
-<div>
  <div style='float:left;'>
-  <%= image_tag('logo.png') %>
+  <!%= image_tag('logo.png') %>
  </div>
 
- <div style='padding-right: 46px; padding-top: 60px; float:right'>
+ <div style='padding-right: 46px; padding-top: 30px; float:right'>
   <table>
     <td><%= link_to image_tag('home.png', :border =>0, :title => 'Домой'), devices_path %> </td>
     <td><%= link_to image_tag('find.png', :border =>0, :title => 'Поиск'), devices_path %> </td>
     <td><%= link_to image_tag('settings.png',:border =>0, :title => 'Настройки'), devices_path %> </td>
   </table>
  </div>
-</div>
 <hr>
 <div class="clear"></div>
 
-<h1>Редактирование статуса устройства</h1>
+<div class="container_12"> 
+<h3>Редактирование статуса устройства</h3>
 
 <% form_for @device do |form| %>
   <table>
@@ -37,3 +36,4 @@
   </table>
   <%= submit_tag 'Update' %>
 <% end %>
+</div>

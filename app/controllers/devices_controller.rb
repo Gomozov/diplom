@@ -13,7 +13,7 @@ class DevicesController < ApplicationController
 
     @device = Device.find params[:id]
     @last_report = @device.reports.last
-    @fields = @last_report.fields #.all :order => 'key'
+    @fields = @last_report.fields
     
     @map = GMap.new "map_div"
     @map.control_init :small => true, :large_map => true, :map_type => true
