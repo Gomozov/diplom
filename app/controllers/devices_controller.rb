@@ -21,7 +21,7 @@ class DevicesController < ApplicationController
     geo_point =  [ @last_report['latitude'], @last_report['longitude'] ]
     @map.center_zoom_init geo_point, 6
 
-    marker = GMarker.new geo_point, :title => @device.device_code, :info_window => '<b>ConnectPort X4</b>'
+    marker = GMarker.new geo_point, :title => @device.device_code, :info_window => '<b>Устройство: </b>ConnectPort X4<br> <b>Статус: </b> <img src="'+@device.device_status+'.png">'
     @map.overlay_init marker
   end
 
