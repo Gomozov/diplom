@@ -2,6 +2,52 @@
   new Ajax.PeriodicalUpdater('devices', '/devices', {method: 'GET', frequency: 15, decay: 1, parameters:{ajax: 1}});  
 </script>
 
+<script type='text/javascript'> 
+var IMAGES = [ "sun", "rain", "snow", "storm" ];
+var ICONS = [];
+var map = null;
+var mgr = null;
+
+function getWeatherIcon() {
+  var i = Math.floor(IMAGES.length*Math.random());
+  if (!ICONS[i]) {
+    var icon = new GIcon();
+    icon.image = "images/" + IMAGES[i] + ".png";
+    icon.iconAnchor = new GPoint(16, 16);
+    icon.infoWindowAnchor = new GPoint(16, 0);
+    icon.iconSize = new GSize(32, 32);
+    icon.shadow = "images/" + IMAGES[i] + "-shadow.png";
+    icon.shadowSize = new GSize(59, 32);
+    ICONS[i] = icon;
+                  }
+  return ICONS[i];
+}
+
+function getRandomPoint() {
+  var lat = 54.25 + (Math.random() - 0.5)*14.5;
+  var lng = 48.00 + (Math.random() - 0.5)*36.0;
+  return new GLatLng(Math.round(lat*10)/10, Math.round(lng*10)/10);
+}
+
+function getWeatherMarkers(n) {
+  var batch = [];
+  for (var i = 0; i < n; ++i) {
+    batch.push(new GMarker(getRandomPoint(), { icon: getWeatherIcon() }));
+                              }
+  return batch;
+}
+
+function setupWeatherMarkers() {
+  mgr = new MarkerManager(map);
+  mgr.addMarkers(getWeatherMarkers(20), 3);
+  mgr.addMarkers(getWeatherMarkers(200), 6);
+  mgr.addMarkers(getWeatherMarkers(1000), 8);
+  mgr.refresh();
+}
+
+</script>
+
+
 <div style='float:left;'>                                                            
   <%= image_tag('logo.png') %>
 </div>
@@ -19,8 +65,15 @@
 <div class="container_12"> 
  <h3>Список контролируемых устройств</h3> 
 
- <div id='devices'>
+ <div id='devices' class='grid_5'>
    <%= render :partial => 'devices', :locals => {:devices => @devices}%>
  </div>
+
+ <div class='grid_7'>
+   <%= GMap.header  %>
+   <%= @map.to_html %>
+   <%= @map.div(:width => 500, :height => 300) %>
+ </div>
+
 </div>
 

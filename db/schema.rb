@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(:version => 20100206162419) do
   create_table "devices", :force => true do |t|
     t.string   "device_code"
     t.string   "device_status"
+    t.string   "device_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

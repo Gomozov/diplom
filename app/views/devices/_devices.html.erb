@@ -1,16 +1,15 @@
 <table>
   <tr>
      <td style='padding-right:15px;'><b> Имя устройства  </b> </td>
-     <td style='padding-right:15px;'><b> Дата получения пакета  </b> </td>
-     <td><b> Статус</b></td>
-   </tr>
+     <td style='padding-right:15px; text-align:center:'><b> Статус </b></td>
+     <td style='text-align:center'><b> Тип </b></td>
+  </tr>
    
 <% devices.each do |d| %>
   <tr>
-    <td><%=h d.device_code %></td>
-    <td><%=h d.created_at.strftime('%d %B %Y %a %H:%M') %></td>
+    <td><%= link_to d.device_code, d, :style => 'text-decoration:none;'%></td>
     <td><%= link_to image_tag(d.device_status + '.png', :border => 0, :title => 'Редактировать статус'), edit_device_path(d) %></td>
-    <td><%= link_to image_tag('more.png', :border => 0, :title => 'Подробнее'), d %></td>
+    <td><%= link_to image_tag(d.device_type + '.png', :border => 0, :title => 'Тип транспортного средства'), edit_device_path(d) %></td>
     <td><%= link_to image_tag('del.png', :border => 0, :title => 'Удалить из базы'), d, :confirm => 'Вы уверенны?', :method => :delete %></td>
   </tr>
 <% end %>

@@ -3,6 +3,7 @@ class CreateDevices < ActiveRecord::Migration
     create_table :devices do |t|
       t.string :device_code
       t.string :device_status
+      t.string :device_type
       t.timestamps
     end
   end

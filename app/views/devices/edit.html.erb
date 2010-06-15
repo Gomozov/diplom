@@ -33,6 +33,14 @@
     <td> New status: </td>
     <td><%= form.select :device_status, [['stop', 'stop'], ['repair', 'repair'], ['go', 'go']] %> </td>
   </tr>
+  <tr>
+    <td> Old type: </td>
+    <td><%= form.label @device.device_type %></td> 
+  </tr>                 
+  <tr>
+    <td> New type: </td>
+    <td><%= form.select :device_type, [['bus', 'bus'], ['tank', 'tank'], ['kamaz', 'kamaz'], ['rail', 'rail'], ['gaz', 'gaz']] %></td>
+  </tr>  
   </table>
   <%= submit_tag 'Update' %>
 <% end %>
