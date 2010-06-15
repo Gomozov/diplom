@@ -10,10 +10,10 @@ class DevicesController < ApplicationController
     @devices.each do |d|
       @last_report = d.reports.last
       geo_point =  [ @last_report['latitude'], @last_report['longitude'] ]
-      marker = GMarker.new geo_point, :title => d.device_code, :info_window => '<b>Устройство: </b>'+d.device_code+'<br> <b>Статус: </b> <img src="'+d.device_status+'.png">'
+      marker = GMarker.new geo_point, :title => d.device_code, :info_window => '<b>Устройство: </b>'+d.device_code+'<br> <b>Статус: </b> <img src="/images/'+d.device_status+'.png">'
       @map.overlay_init marker
     end
-    @map.icon_global_init(GIcon.new(:image => 'images/sun.png', :icon_size => GSize.new(32,32), :icon_anchor => GPoint.new(16,32)), 'Sun_icon' )
+    @map.icon_global_init(GIcon.new(:image => '/images/sun.png', :icon_size => GSize.new(32,32), :icon_anchor => GPoint.new(16,32)), 'Sun_icon' )
     #Sun_icon = Variable.new('Sun_icon')
     sun = GMarker.new([54, 48], :icon => 'Sun_icon')
     @map.declare_init(sun,'sun')
@@ -37,7 +37,7 @@ class DevicesController < ApplicationController
     geo_point =  [ @last_report['latitude'], @last_report['longitude'] ]
     @map.center_zoom_init geo_point, 6
 
-    marker = GMarker.new geo_point, :title => @device.device_code, :info_window => '<b>Устройство: </b>ConnectPort X4<br> <b>Статус: </b> <img src="'+@device.device_status+'.png">'
+    marker = GMarker.new geo_point, :title => @device.device_code, :info_window => '<b>Устройство: </b>ConnectPort X4<br> <b>Статус: </b> <img src="/images/'+@device.device_status+'.png">'
     @map.overlay_init marker
   end
 
