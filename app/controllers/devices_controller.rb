@@ -13,12 +13,7 @@ class DevicesController < ApplicationController
       marker = GMarker.new geo_point, :title => d.device_code, :info_window => '<b>Устройство: </b>'+d.device_code+'<br> <b>Статус: </b> <img src="/images/'+d.device_status+'_m.png">'
       @map.overlay_init marker
     end
-    #@map.icon_global_init(GIcon.new(:image => '/images/sun.png', :icon_size => GSize.new(32,32), :icon_anchor => GPoint.new(16,32)), 'Sun_icon' )
-    #Sun_icon = Variable.new('Sun_icon')
-    #sun = GMarker.new([54, 48], :icon => 'Sun_icon')
-    #@map.declare_init(sun,'sun')
-    #@map.overlay_init sun
-
+   
     if params[:ajax]
       render :template => "devices/_devices.html.erb", :locals => {:devices => @devices}, :layout => false
     end
