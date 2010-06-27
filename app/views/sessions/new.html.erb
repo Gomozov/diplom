@@ -1,0 +1,17 @@
+<h2>Пожалуйста авторизируйтесь</h2>
+
+<% form_for resource_name, resource, :url => session_path(resource_name) do |f| -%>
+  <p><%= f.label 'Логин' %></p>
+  <p><%= f.text_field :email %></p>
+
+  <p><%= f.label 'Пароль' %></p>
+  <p><%= f.password_field :password %></p>
+
+  <% if devise_mapping.rememberable? -%>
+    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
+  <% end -%>
+
+  <p><%= f.submit "Ввод" %></p>
+<% end -%>
+
+<%= render :partial => "shared/devise_links" %>
