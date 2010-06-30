@@ -1,7 +1,10 @@
 <script type='text/javascript' src='http://www.google.com/jsapi'></script>
+<script> 
+  goog.require('goog.ui.Gauge');
+</script>
+
 <script type='text/javascript'>
-
-
+  
   var device_id = <%= @device.id %>;
   var last_physical_report = <%= @last_report.physical_fields_hash.to_json %>;
   var viz_data =  null;
@@ -67,7 +70,7 @@
     chart_object = new google.visualization.Gauge(document.getElementById('chart_div'));
     drawChart(d);
     initializeUpdater();
-  });
+                                      });
 
 </script>
 
@@ -95,4 +98,5 @@
    <%= @fields.reject!{|f| !((f.key.include? 'addr') or (f.key.include? 'ADuC')) } %>
    <%= render :partial => 'reports/fields', :locals => {:fields => @fields }, :layout => false %>
    </div>
+    
 </div>
