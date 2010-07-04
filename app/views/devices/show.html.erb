@@ -1,10 +1,80 @@
 <script type='text/javascript' src='http://www.google.com/jsapi'></script>
-<script> 
-  goog.require('goog.ui.Gauge');
-</script>
 
 <script type='text/javascript'>
-  
+
+  goog.require('goog.ui.Gauge');
+  var CustomGaugeTheme = function() {
+        }
+ 
+    CustomGaugeTheme.prototype.getInternalBorderFill = function(cx, cy, r) {
+            return new goog.graphics.SolidFill("#8080ff");
+                }
+ 
+    CustomGaugeTheme.prototype.getExternalBorderFill = function(cx, cy, r) {
+            return new goog.graphics.SolidFill("#8080c0");
+                }
+ 
+    CustomGaugeTheme.prototype.getInternalBorderStroke = function() {
+            return new goog.graphics.Stroke(2, "#ffff00");
+                }
+ 
+    CustomGaugeTheme.prototype.getMajorTickStroke = function() {
+            return new goog.graphics.Stroke(2, "#ffffff");
+                }
+ 
+    CustomGaugeTheme.prototype.getHingeStroke = function() {
+            return new goog.graphics.Stroke(1, "#00a000");
+                }
+ 
+    CustomGaugeTheme.prototype.getHingeFill = function(cx, cy, r) {
+            return new goog.graphics.SolidFill("#00c000");
+                }
+ 
+    CustomGaugeTheme.prototype.getNeedleStroke = function() {
+            return new goog.graphics.Stroke(1, "#008040");
+                }
+ 
+    CustomGaugeTheme.prototype.getNeedleFill = function(cx, cy, r) {
+            return new goog.graphics.SolidFill("#008040", 0.7);
+                }
+ 
+ 
+    var interactiveGauge;
+     
+        function drawGauge(key, val) {
+           
+          interactiveGauge = new goog.ui.Gauge(135, 135);
+          if (key.search('U_mV')>-1)
+          {
+            interactiveGauge.setMaximum(5000);
+            interactiveGauge.addBackgroundColor(2500, 4500, goog.ui.Gauge.GREEN);  
+            interactiveGauge.addBackgroundColor(4600, 4800, goog.ui.Gauge.YELLOW);
+            interactiveGauge.addBackgroundColor(4800, 5000, goog.ui.Gauge.RED);
+            interactiveGauge.addBackgroundColor(0, 800, goog.ui.Gauge.RED);
+          }
+          else
+          {
+            interactiveGauge.setMaximum(100);
+            interactiveGauge.addBackgroundColor(0, 30, goog.ui.Gauge.GREEN);  
+            interactiveGauge.addBackgroundColor(75, 90, goog.ui.Gauge.YELLOW);
+            interactiveGauge.addBackgroundColor(90, 100, goog.ui.Gauge.RED);  
+          }
+          interactiveGauge.setTitleTop(key);
+          interactiveGauge.setTicks(5, 2);
+          interactiveGauge.setMajorTickLabels(['Low', '20%', '40%', '60%', '80%', 'High']);
+          interactiveGauge.setValue(val, val);
+          interactiveGauge.render(document.getElementById('interactive'));
+                                                                 
+        }
+
+        function drawGauges(ms) {
+          for(key in ms)             
+          {                                            
+           drawGauge(key, ms[key]);
+          }                                            
+        }
+
+
   var device_id = <%= @device.id %>;
   var last_physical_report = <%= @last_report.physical_fields_hash.to_json %>;
   var viz_data =  null;
@@ -41,7 +111,10 @@
           viz_data.setValue(i, 1, data[key]);                                    
           i++;                                                                            
          }    
-    drawChart(viz_data); 
+    drawChart(viz_data);
+    document.getElementById('interactive').innerHTML = '';
+    drawGauges(data);                     
+                                                             
   }
 
   function initializeUpdater()
@@ -70,6 +143,7 @@
     chart_object = new google.visualization.Gauge(document.getElementById('chart_div'));
     drawChart(d);
     initializeUpdater();
+    drawGauges(last_physical_report);
                                       });
 
 </script>
@@ -98,5 +172,10 @@
    <%= @fields.reject!{|f| !((f.key.include? 'addr') or (f.key.include? 'ADuC')) } %>
    <%= render :partial => 'reports/fields', :locals => {:fields => @fields }, :layout => false %>
    </div>
-    
+
+   <div class='grid_5' style='border: 1px solid grey;'>
+     <table>
+       <td><div id='interactive' style='width: 135px; height: 135 px; float: left;'></div></td>
+     </table>  
+   </div>  
 </div>
