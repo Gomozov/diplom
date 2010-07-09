@@ -63,7 +63,7 @@
           interactiveGauge.setTicks(5, 2);
           interactiveGauge.setMajorTickLabels(['Low', '20%', '40%', '60%', '80%', 'High']);
           interactiveGauge.setValue(val, val);
-          interactiveGauge.render(document.getElementById('interactive'));
+          interactiveGauge.render(document.getElementById('gauges'));
                                                                  
         }
 
@@ -112,7 +112,7 @@
           i++;                                                                            
          }    
     drawChart(viz_data);
-    document.getElementById('interactive').innerHTML = '';
+    document.getElementById('gauges').innerHTML = '';
     drawGauges(data);                     
                                                              
   }
@@ -173,9 +173,24 @@
    <%= render :partial => 'reports/fields', :locals => {:fields => @fields }, :layout => false %>
    </div>
 
-   <div class='grid_5' style='border: 1px solid grey;'>
-     <table>
-       <td><div id='interactive' style='width: 135px; height: 135 px; float: left;'></div></td>
-     </table>  
+   <style>
+     .gauges-container {
+       border: 1px solid grey;
+     }
+
+     .gauges .goog-gauge {
+       float:left;
+     }
+
+     .cl {
+       clear: both;
+       height: 0px;
+       line-height: 0px;
+     }
+   </style>
+
+   <div class='gauges-container'>
+     <div id='gauges' class='gauges' ></div>
+     <p class='cl'/>
    </div>  
 </div>
