@@ -214,7 +214,7 @@ goog.ui.Gauge.FACTOR_NEEDLE_HINGE = 0.15;
  * The title font size (height) for titles relative to the internal radius.
  * @type {number}
  */
-goog.ui.Gauge.FACTOR_TITLE_FONT_SIZE = 0.16;
+goog.ui.Gauge.FACTOR_TITLE_FONT_SIZE = 0.22;
 
 
 /**
@@ -228,7 +228,7 @@ goog.ui.Gauge.FACTOR_TITLE_OFFSET = 0.35;
  * The formatted value font size (height) relative to the internal radius.
  * @type {number}
  */
-goog.ui.Gauge.FACTOR_VALUE_FONT_SIZE = 0.18;
+goog.ui.Gauge.FACTOR_VALUE_FONT_SIZE = 0.2;
 
 
 /**

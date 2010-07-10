@@ -1,4 +1,4 @@
-<script type='text/javascript' src='http://www.google.com/jsapi'></script>
+<!script type='text/javascript' src='http://www.google.com/jsapi'><!/script>
 
 <script type='text/javascript'>
 
@@ -39,31 +39,31 @@
                 }
  
  
-    var interactiveGauge;
+    var iGauge;
      
         function drawGauge(key, val) {
            
-          interactiveGauge = new goog.ui.Gauge(135, 135);
+          iGauge = new goog.ui.Gauge(125, 125);
           if (key.search('U_mV')>-1)
           {
-            interactiveGauge.setMaximum(5000);
-            interactiveGauge.addBackgroundColor(2500, 4500, goog.ui.Gauge.GREEN);  
-            interactiveGauge.addBackgroundColor(4600, 4800, goog.ui.Gauge.YELLOW);
-            interactiveGauge.addBackgroundColor(4800, 5000, goog.ui.Gauge.RED);
-            interactiveGauge.addBackgroundColor(0, 800, goog.ui.Gauge.RED);
+            iGauge.setMaximum(5000);
+            iGauge.addBackgroundColor(2500, 4500, goog.ui.Gauge.GREEN);  
+            iGauge.addBackgroundColor(4600, 4800, goog.ui.Gauge.YELLOW);
+            iGauge.addBackgroundColor(4800, 5000, goog.ui.Gauge.RED);
+            iGauge.addBackgroundColor(0, 800, goog.ui.Gauge.RED);
           }
           else
           {
-            interactiveGauge.setMaximum(100);
-            interactiveGauge.addBackgroundColor(0, 30, goog.ui.Gauge.GREEN);  
-            interactiveGauge.addBackgroundColor(75, 90, goog.ui.Gauge.YELLOW);
-            interactiveGauge.addBackgroundColor(90, 100, goog.ui.Gauge.RED);  
+            iGauge.setMaximum(100);
+            iGauge.addBackgroundColor(0, 30, goog.ui.Gauge.GREEN);  
+            iGauge.addBackgroundColor(75, 90, goog.ui.Gauge.YELLOW);
+            iGauge.addBackgroundColor(90, 100, goog.ui.Gauge.RED);  
           }
-          interactiveGauge.setTitleTop(key);
-          interactiveGauge.setTicks(5, 2);
-          interactiveGauge.setMajorTickLabels(['Low', '20%', '40%', '60%', '80%', 'High']);
-          interactiveGauge.setValue(val, val);
-          interactiveGauge.render(document.getElementById('gauges'));
+          iGauge.setTitleTop(key);
+          iGauge.setTicks(5, 4);
+          iGauge.setMajorTickLabels(['Low', '20%', '40%', '60%', '80%', 'High']);
+          iGauge.setValue(val, val);
+          iGauge.render(document.getElementById('gauges'));
                                                                  
         }
 
@@ -77,21 +77,21 @@
 
   var device_id = <%= @device.id %>;
   var last_physical_report = <%= @last_report.physical_fields_hash.to_json %>;
-  var viz_data =  null;
-  var chart_object =  null;
-  var chart_options = {
-    width: 400, height: 360,
-    max: 50,
-    greenFrom: 0, greenTo: 20,
-    redFrom: 31, redTo: 50,
-    yellowFrom:21, yellowTo: 30,
-    minorTicks: 5
-  };
+ // var viz_data =  null;
+ // var chart_object =  null;
+ // var chart_options = {
+ //   width: 400, height: 360,
+ //   max: 50,
+ //   greenFrom: 0, greenTo: 20,
+ //   redFrom: 31, redTo: 50,
+ //   yellowFrom:21, yellowTo: 30,
+ //   minorTicks: 5
+//  };
 
-  function drawChart(data)
-  {
-    chart_object.draw(data, chart_options);
-  }
+//  function drawChart(data)
+//  {
+//    chart_object.draw(data, chart_options);
+//  }
 
  function requestLastReport()
   {
@@ -105,13 +105,13 @@
 
   function updateLastReport(data)
 {
-    var i = 0;                                                                        
-    for(key in data)                                                  
-         {
-          viz_data.setValue(i, 1, data[key]);                                    
-          i++;                                                                            
-         }    
-    drawChart(viz_data);
+ //   var i = 0;                                                                        
+ //   for(key in data)                                                  
+ //        {
+ //         viz_data.setValue(i, 1, data[key]);                                    
+ //         i++;                                                                            
+ //        }    
+//    drawChart(viz_data);
     document.getElementById('gauges').innerHTML = '';
     drawGauges(data);                     
                                                              
@@ -130,21 +130,22 @@
     setInterval( requestLastReport, 8000);
   }
 
-  google.load('visualization', '1', {packages:['gauge']});
+  //google.load('visualization', '1', {packages:['gauge']});
  
-  google.setOnLoadCallback(function(){
-    var d = viz_data = new google.visualization.DataTable();
-    d.addColumn('string', 'Label');
-    d.addColumn('number', 'Value');
-    for(key in last_physical_report)
-    {
-      d.addRow([key, last_physical_report[key]]);
-    }
-    chart_object = new google.visualization.Gauge(document.getElementById('chart_div'));
-    drawChart(d);
+  //google.setOnLoadCallback(function(){
+  //  var d = viz_data = new google.visualization.DataTable();
+  //  d.addColumn('string', 'Label');
+  //  d.addColumn('number', 'Value');
+  //  for(key in last_physical_report)
+  //  {
+   //   d.addRow([key, last_physical_report[key]]);
+   // }
+   // chart_object = new google.visualization.Gauge(document.getElementById('chart_div'));
+   // drawChart(d);
+   Event.observe(window, 'load', function(){
     initializeUpdater();
     drawGauges(last_physical_report);
-                                      });
+   });
 
 </script>
 
@@ -156,26 +157,28 @@
   </div>
 
    <div class='grid_7' >
-   <%= GMap.header %>
-   <%= @map.to_html %>
-   <%= @map.div(:width => 500, :height => 300) %>
+    <%= GMap.header %>
+    <%= @map.to_html %>
+    <%= @map.div(:width => 500, :height => 300) %>
+    <div id='device' >                                                                             
+     <%= @fields.reject!{|f| !((f.key.include? 'addr') or (f.key.include? 'ADuC')) } %>             
+     <%= render :partial => 'reports/fields', :locals => {:fields => @fields }, :layout => false %> 
+    </div>                                                                                         
    </div>
 
    <div class='grid_5' style='text-align: center; border: 1px solid grey;'>
-     <b>Параметры датчиков</b>                                     
-     <div id='chart_div'> </div>
-   </div>
-
-   <div class="clear"></div>
-
-   <div id='device' >
-   <%= @fields.reject!{|f| !((f.key.include? 'addr') or (f.key.include? 'ADuC')) } %>
-   <%= render :partial => 'reports/fields', :locals => {:fields => @fields }, :layout => false %>
+    <div class='gauges-container'>         
+     <b>Параметры датчиков</b>            
+     <div id='gauges' class='gauges' ></div>
+     <p class='cl'/>                        
+    </div>                                                                        
+     <!div id='chart_div'> <!/div>
    </div>
 
    <style>
      .gauges-container {
        border: 1px solid grey;
+       text-align: center;
      }
 
      .gauges .goog-gauge {
@@ -186,11 +189,6 @@
        clear: both;
        height: 0px;
        line-height: 0px;
+       width: 300px;
      }
    </style>
-
-   <div class='gauges-container'>
-     <div id='gauges' class='gauges' ></div>
-     <p class='cl'/>
-   </div>  
-</div>
