@@ -2,7 +2,6 @@
   new Ajax.PeriodicalUpdater('devices', '/devices', {method: 'GET', frequency: 15, decay: 1, parameters:{ajax: 1}});  
 </script>
 
-<div class="container_12"> 
  <h3>Список контролируемых устройств</h3> 
 
  <div id='devices' class='grid_5'>
@@ -14,6 +13,4 @@
    <%= @map.to_html %>
    <%= @map.div(:width => 500, :height => 300) %>
  </div>
-
-</div>
 

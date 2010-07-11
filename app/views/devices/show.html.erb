@@ -149,7 +149,6 @@
 
 </script>
 
-<div class="container_12">
   <div class='grig_12' style='vertical-align: bottom;'>
     <h3>  
   <%= image_tag (@device.device_type + '.png') %> 
@@ -163,17 +162,16 @@
     <div id='device' >                                                                             
      <%= @fields.reject!{|f| !((f.key.include? 'addr') or (f.key.include? 'ADuC')) } %>             
      <%= render :partial => 'reports/fields', :locals => {:fields => @fields }, :layout => false %> 
-    </div>                                                                                         
+   </div>                                                                                                           
    </div>
 
-   <div class='grid_5' style='text-align: center; border: 1px solid grey;'>
-    <div class='gauges-container'>         
-     <b>Параметры датчиков</b>            
-     <div id='gauges' class='gauges' ></div>
-     <p class='cl'/>                        
-    </div>                                                                        
-     <!div id='chart_div'> <!/div>
-   </div>
+   <div class='grid_5' style='text-align: center; b rder: 1px solid grey;' onclick="window.location='<%= url_for :action => :index, :controller => 'reports', :id => @device.id %>'" >
+  <div class='gauges-container'>         
+   <b>Параметры датчиков</b>            
+   <div id='gauges' class='gauges' ></div>
+   <p class='cl'/>                        
+  </div>                                                                        
+   <!div id='chart_div'> <!/div>
 
    <style>
      .gauges-container {

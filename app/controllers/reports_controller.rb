@@ -43,4 +43,15 @@ class ReportsController < ApplicationController
 
     redirect_to reports_url
   end
+
+  def index
+   @reports = Report.find (:all, :conditions => {:device_id => params[:id]})
+   @keys = ReportField.find (:all, :conditions => {:key => 'Temp data WRouter', :report_id => @reports.map(&:id)})
+   @values_m = []
+   @report_id_m = []
+   @keys.each do |d|
+     @values_m.push (d.value)
+     @report_id_m.push (d.report_id)
+   end
+  end
 end
