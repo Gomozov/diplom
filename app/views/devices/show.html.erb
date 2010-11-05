@@ -1,4 +1,6 @@
 <!script type='text/javascript' src='http://www.google.com/jsapi'><!/script>
+<script src="base.js" type="text/javascript" charset="utf-8"></script> 
+
 
 <script type='text/javascript'>
 
@@ -77,21 +79,6 @@
 
   var device_id = <%= @device.id %>;
   var last_physical_report = <%= @last_report.physical_fields_hash.to_json %>;
- // var viz_data =  null;
- // var chart_object =  null;
- // var chart_options = {
- //   width: 400, height: 360,
- //   max: 50,
- //   greenFrom: 0, greenTo: 20,
- //   redFrom: 31, redTo: 50,
- //   yellowFrom:21, yellowTo: 30,
- //   minorTicks: 5
-//  };
-
-//  function drawChart(data)
-//  {
-//    chart_object.draw(data, chart_options);
-//  }
 
  function requestLastReport()
   {
@@ -105,13 +92,7 @@
 
   function updateLastReport(data)
 {
- //   var i = 0;                                                                        
- //   for(key in data)                                                  
- //        {
- //         viz_data.setValue(i, 1, data[key]);                                    
- //         i++;                                                                            
- //        }    
-//    drawChart(viz_data);
+ 
     document.getElementById('gauges').innerHTML = '';
     drawGauges(data);                     
                                                              
@@ -130,18 +111,6 @@
     setInterval( requestLastReport, 8000);
   }
 
-  //google.load('visualization', '1', {packages:['gauge']});
- 
-  //google.setOnLoadCallback(function(){
-  //  var d = viz_data = new google.visualization.DataTable();
-  //  d.addColumn('string', 'Label');
-  //  d.addColumn('number', 'Value');
-  //  for(key in last_physical_report)
-  //  {
-   //   d.addRow([key, last_physical_report[key]]);
-   // }
-   // chart_object = new google.visualization.Gauge(document.getElementById('chart_div'));
-   // drawChart(d);
    Event.observe(window, 'load', function(){
     initializeUpdater();
     drawGauges(last_physical_report);
@@ -165,13 +134,13 @@
    </div>                                                                                                           
    </div>
 
-   <div class='grid_5' style='text-align: center; b rder: 1px solid grey;' onclick="window.location='<%= url_for :action => :index, :controller => 'reports', :id => @device.id %>'" >
+   <div class='grid_5' style='text-align: center; border: 1px solid grey;' onclick="window.location='<%= url_for :action => :index, :controller => 'reports', :id => @device.id %>'" >
   <div class='gauges-container'>         
    <b>Параметры датчиков</b>            
    <div id='gauges' class='gauges' ></div>
    <p class='cl'/>                        
-  </div>                                                                        
-   <!div id='chart_div'> <!/div>
+  </div> 
+   </div>
 
    <style>
      .gauges-container {
